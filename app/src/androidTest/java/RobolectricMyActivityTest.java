@@ -10,10 +10,10 @@ import java.lang.Exception;
 public class RobolectricMyActivityTest {
 
     @Test
-    public void shouldHaveApplicationName() throws Exception{
+    public void shouldHaveApplicationName() throws Exception {
         String name = new MyActivity().getResources().getString(R.string.app_name);
 
-//        assert(name, "MyActivity");
+//        assert (name,equals("MyActivity"));
 //        assertEquals("123412", name);
     }
 
