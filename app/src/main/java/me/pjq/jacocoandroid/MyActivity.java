@@ -143,4 +143,7 @@ public class MyActivity extends Activity
         }
     }
 
+    public String getActivityId(){
+        return "aasdfadsf";
+    }
 }
