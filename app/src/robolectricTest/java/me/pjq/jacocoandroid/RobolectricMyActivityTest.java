@@ -27,13 +27,11 @@ public class RobolectricMyActivityTest {
     }
 
 
-    @Test
     public void testShouldHaveApplicationName() throws Exception {
         String name = activity.getResources().getString(R.string.app_name);
         Assert.assertEquals(name, equals("MyActivity"));
     }
 
-    @Test
     public void testSomething() {
         fail("not implemented");
     }

@@ -2,6 +2,9 @@ package me.pjq.jacocoandroid;
 
 import android.test.ActivityInstrumentationTestCase2;
 import com.robotium.solo.Solo;
+import me.pjq.jacocoandroid.MyActivity;
+
+import java.lang.Exception;
 
 public class RobotiumMyActivityTest extends ActivityInstrumentationTestCase2<MyActivity> {
     private Solo solo;

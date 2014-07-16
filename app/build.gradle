@@ -12,17 +12,23 @@ buildscript {
 apply plugin: 'android'
 apply plugin: "jacoco"
 
+def robotiumTest = true;
 
 android {
     compileSdkVersion 19
     buildToolsVersion "19.1.0"
 
     sourceSets {
-//        testPath = 'src/androidTest'
-        testPath = 'src/robolectricTest'
-//        testPath = 'src/robotiumTest'
-        instrumentTest.setRoot(testPath)
-        androidTest.setRoot(testPath)
+        def testCasePath = 'src/androidTest'
+        println "robotiumTest = " + robotiumTest
+        if (robotiumTest) {
+            testCasePath = 'src/robotiumTest'
+        } else {
+            testCasePath = 'src/robolectricTest'
+        }
+
+        instrumentTest.setRoot(testCasePath)
+        androidTest.setRoot(testCasePath)
     }
 
     packagingOptions {
@@ -51,6 +57,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+    }
 }
 
 
@@ -60,21 +69,27 @@ dependencies {
     compile 'com.android.support:support-v4:19.+'
 
     androidTestCompile 'junit:junit:4.+'
-    androidTestCompile('org.robolectric:robolectric:2.3') {
-        exclude module: 'classworlds'
-        exclude module: 'commons-logging'
-        exclude module: 'httpclient'
-        exclude module: 'maven-artifact'
-        exclude module: 'maven-artifact-manager'
-        exclude module: 'maven-error-diagnostics'
-        exclude module: 'maven-model'
-        exclude module: 'maven-project'
-        exclude module: 'maven-settings'
-        exclude module: 'plexus-container-default'
-        exclude module: 'plexus-interpolation'
-        exclude module: 'plexus-utils'
-        exclude module: 'wagon-file'
-        exclude module: 'wagon-http-lightweight'
-        exclude module: 'wagon-provider-api'
+
+
+    if (robotiumTest) {
+
+    } else {
+        androidTestCompile('org.robolectric:robolectric:2.3') {
+            exclude module: 'classworlds'
+            exclude module: 'commons-logging'
+            exclude module: 'httpclient'
+            exclude module: 'maven-artifact'
+            exclude module: 'maven-artifact-manager'
+            exclude module: 'maven-error-diagnostics'
+            exclude module: 'maven-model'
+            exclude module: 'maven-project'
+            exclude module: 'maven-settings'
+            exclude module: 'plexus-container-default'
+            exclude module: 'plexus-interpolation'
+            exclude module: 'plexus-utils'
+            exclude module: 'wagon-file'
+            exclude module: 'wagon-http-lightweight'
+            exclude module: 'wagon-provider-api'
+        }
     }
 }
