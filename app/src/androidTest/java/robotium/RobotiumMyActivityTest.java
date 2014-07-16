@@ -16,14 +16,14 @@ public class RobotiumMyActivityTest extends ActivityInstrumentationTestCase2<MyA
         solo = new Solo(getInstrumentation(), getActivity());
     }
 
-//    public void testAppName() throws Exception {
-//    }
+    public void testAppName() throws Exception {
+    }
 
-//    public void testActivity() throws Exception {
-//        MyActivity activity = (MyActivity) solo.getCurrentActivity();
-//        String id = activity.getActivityId();
-//        assertEquals("aasdfadsf", id);
-//    }
+    public void testActivity() throws Exception {
+        MyActivity activity = (MyActivity) solo.getCurrentActivity();
+        String id = activity.getActivityId();
+        assertEquals("aasdfadsf", id);
+    }
 
     @Override
     public void tearDown() throws Exception {
