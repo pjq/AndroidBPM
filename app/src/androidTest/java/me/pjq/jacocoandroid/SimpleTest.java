@@ -15,6 +15,7 @@ import java.util.Arrays;
 
 import static java.util.EnumSet.allOf;
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.core.AnyOf.anyOf;
@@ -30,16 +31,23 @@ import static org.junit.matchers.JUnitMatchers.both;
 @Config(manifest = "./src/main/AndroidManifest.xml")
 @RunWith(RobolectricTestRunner.class)
 public class SimpleTest {
-    Activity activity;
+    MyActivity activity;
 
     @Before
     public void setUp() throws Exception {
-        activity = Robolectric.buildActivity(MyActivity.class).create().visible().get();
+        activity = (MyActivity)Robolectric.buildActivity(MyActivity.class).create().visible().get();
     }
 
     @Test
     public void testSomething() throws Exception {
         Activity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         assertTrue(activity != null);
+    }
+
+    @Test
+    public void testGetActivityId() throws Exception {
+        activity = (MyActivity)Robolectric.buildActivity(MyActivity.class).create().visible().get();
+        String id = activity.getActivityId();
+        assertThat(id, equalTo("aasdfadsf"));
     }
 }
