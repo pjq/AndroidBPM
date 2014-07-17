@@ -24,5 +24,4 @@ public class RobolectricGradleTestRunner extends RobolectricTestRunner {
         AndroidManifest appManifest = super.getAppManifest(config);
         return appManifest;
     }
-
 }

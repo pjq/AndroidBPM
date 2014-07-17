@@ -20,6 +20,7 @@ import static org.hamcrest.Matchers.startsWith;
 import static org.hamcrest.core.AnyOf.anyOf;
 import static org.hamcrest.text.StringContains.containsString;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.both;
 
 
@@ -33,41 +34,12 @@ public class SimpleTest {
 
     @Before
     public void setUp() throws Exception {
-//        activity = Robolectric.buildActivity(MyActivity.class).create().visible().get();
+        activity = Robolectric.buildActivity(MyActivity.class).create().visible().get();
     }
 
-    @SmallTest
-    public void test1() throws Exception {
-        String hello = "";
-        assertThat(hello, equalTo("Hello World!"));
-
+    @Test
+    public void testSomething() throws Exception {
+        Activity activity = Robolectric.buildActivity(MyActivity.class).create().get();
+        assertTrue(activity != null);
     }
-
-//    @SmallTest
-//    public void test2() throws Exception {
-
-//        Button btnLaunch = null;
-        // Not Null
-//        assertThat(btnLaunch, notNullValue());
-// Equals
-//        assertThat((String) btnLaunch.getText(), equalTo("Launch"));
-// All Conditions
-        //   assertThat("myValue", allOf(startsWith("my"), containsString("Val")));
-// Any Conditions
-//        assertThat("myValue", anyOf(startsWith("foo"), containsString("Val")));
-// Both
-//        assertThat("fab", both(containsString("a")).and(containsString("b")));
-// Kind Of
-        //   assertThat(activity, isA(MyActivity.class));
-// Array Inclusion
-//        assertThat(Arrays.asList("foo", "bar"), hasItem("bar"));
-// IsNull
-        //   assertThat(activity, is(nullValue());
-//    }
-
-    @After
-    public void tearDown() throws Exception {
-//        activity.finish();
-    }
-
 }

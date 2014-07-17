@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.pjq.jacocoandroid" >
 
+    <uses-sdk android:minSdkVersion="18"
+              android:targetSdkVersion="18"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
