@@ -2,6 +2,8 @@ language: android
 android:
   components:
     - build-tools-19.1.0
+    - build-tools-19.1
+    - build-tools-19.0.2
     - android-18
     - sysimg-19
     - extra-android-support
