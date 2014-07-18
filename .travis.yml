@@ -9,6 +9,7 @@ android:
     - extra-android-support
   licenses:
     - android-sdk-license-bcbbd656
+    - android-sdk-license-5be876d5
     - '.*intel.+'
 
 script:
