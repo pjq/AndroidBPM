@@ -1,0 +1,32 @@
+language: android 
+jdk: oraclejdk7
+before_install:
+    # Install base Android SDK and components
+    #- sudo apt-get update -qq
+   # - sudo apt-get install -qq libstdc++6:i386 lib32z1
+   # - export COMPONENTS=build-tools-19.0.0,android-16
+   # - curl -L https://raw.github.com/embarkmobile/android-sdk-installer/version-1/android-sdk-installer | bash /dev/stdin --install=$COMPONENTS
+   # - source ~/.android-sdk-installer/env
+
+    - sudo apt-get update -qq
+    - if [ `uname -m` = x86_64 ]; then sudo apt-get install -o Dpkg::Options::="--force-confold" -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch; fi
+    #- wget http://dl.google.com/android/android-sdk_r21.1-linux.tgz
+    - wget http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz
+    - ls
+    - tar xzvf android-sdk_r23.0.2-linux.tgz
+    - ls
+    - export ANDROID_HOME=$PWD/android-sdk-linux
+    - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
+    - android list sdk --all
+    - echo yes | android update sdk --all --filter platform-tools --no-ui --force > /dev/null
+    - echo yes | android update sdk --all --filter extra-android-support --no-ui --force > /dev/null
+    - echo yes | android update sdk --all --filter android-18 --no-ui --force > /dev/null
+    - echo yes | android update sdk --all --filter android-19 --no-ui --force > /dev/null
+    - echo yes | android update sdk --all --filter build-tools-19.1.0 --no-ui --force
+    #- echo yes | android update sdk --filter extra-android-m2repository --no-ui --force > /dev/null
+    
+install:
+    #- mvn install -DskipTests=true
+    
+script:
+    - ./gradlew clean test
