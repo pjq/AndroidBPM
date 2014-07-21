@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
-import android.widget.Button;
 import android.widget.TextView;
 
 import at.markushi.ui.CircleButton;
@@ -163,7 +162,7 @@ public class MyActivity extends Activity
 //                        }
 //                    }, 200);
                     Intent intent = new Intent();
-                    intent.setClass(getActivity(), PicassoActivity.class);
+                    intent.setClass(getActivity(), PicassoActivity_.class);
                     startActivity(intent);
                 }
             });

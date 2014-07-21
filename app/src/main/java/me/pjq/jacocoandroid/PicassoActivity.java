@@ -6,20 +6,25 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
 /**
  * Created by pengjianqing on 7/21/14.
  */
+@EActivity(R.layout.picasso)
 public class PicassoActivity extends Activity{
-    private ImageView imageView;
+    @ViewById
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
-        setContentView(R.layout.picasso);
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-
+    @AfterViews
+    void afterViews(){
         String url = "http://pjq.me/wp-content/uploads/2014/07/200662111018610602.png";
         Picasso.with(getApplicationContext()).setIndicatorsEnabled(true);
         Picasso.with(getApplicationContext()).load(url).into(imageView);
