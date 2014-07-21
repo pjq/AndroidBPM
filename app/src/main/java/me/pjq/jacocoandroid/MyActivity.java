@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,7 +13,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Button;
 import android.widget.TextView;
+
+import at.markushi.ui.CircleButton;
 
 
 public class MyActivity extends Activity
@@ -118,6 +122,7 @@ public class MyActivity extends Activity
          */
 
         private TextView labelTextView;
+        private CircleButton startPcassoButton;
         private int sectionNumber;
 
         public static PlaceholderFragment newInstance(int sectionNumber) {
@@ -139,11 +144,30 @@ public class MyActivity extends Activity
         }
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_my, container, false);
             labelTextView = (TextView) rootView.findViewById(R.id.section_label);
             setLabelTextView("label"+sectionNumber);
+
+            startPcassoButton = (CircleButton) rootView.findViewById(R.id.startPicassoButton);
+            startPcassoButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    startPcassoButton.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Intent intent = new Intent();
+//                            intent.setClass(getActivity(), PicassoActivity.class);
+//                            startActivity(intent);
+//                        }
+//                    }, 200);
+                    Intent intent = new Intent();
+                    intent.setClass(getActivity(), PicassoActivity.class);
+                    startActivity(intent);
+                }
+            });
+
             return rootView;
         }
 
