@@ -2,6 +2,7 @@ package me.pjq.jacocoandroid;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -21,6 +22,20 @@ public class PicassoActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getActionBar().setHomeButtonEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (android.R.id.home == item.getItemId()){
+            finish();
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 
     @AfterViews

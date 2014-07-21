@@ -41,7 +41,6 @@ apt {
 //Config for the android annotation
 
 
-
 robolectric {
     include '**/*Test.class'
 }
@@ -156,4 +155,8 @@ idea {
     module {
         testOutputDir = file('build/test-classes/debug')
     }
+}
+dependencies {
+    compile 'com.android.support:support-v4:19.+'
+    compile 'com.google.android.gms:play-services:4.2.42'
 }

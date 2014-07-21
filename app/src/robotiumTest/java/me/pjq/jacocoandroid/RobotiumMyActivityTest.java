@@ -3,11 +3,11 @@ package me.pjq.jacocoandroid;
 import android.test.ActivityInstrumentationTestCase2;
 import com.robotium.solo.Solo;
 
-public class RobotiumMyActivityTest extends ActivityInstrumentationTestCase2<MyActivity> {
+public class RobotiumMyActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private Solo solo;
 
     public RobotiumMyActivityTest() {
-        super(MyActivity.class);
+        super(MainActivity.class);
     }
 
     public void setUp() throws Exception {
@@ -18,7 +18,7 @@ public class RobotiumMyActivityTest extends ActivityInstrumentationTestCase2<MyA
     }
 
     public void testActivity() throws Exception {
-        MyActivity activity = (MyActivity) solo.getCurrentActivity();
+        MainActivity activity = (MainActivity) solo.getCurrentActivity();
         String id = activity.getActivityId();
         assertEquals("aasdfadsf", id);
     }

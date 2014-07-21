@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JacocoAndroid.iml" filepath="$PROJECT_DIR$/JacocoAndroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidjacoco.iml" filepath="$PROJECT_DIR$/androidjacoco.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/circlebutton/circlebutton.iml" filepath="$PROJECT_DIR$/library/circlebutton/circlebutton.iml" />
     </modules>
