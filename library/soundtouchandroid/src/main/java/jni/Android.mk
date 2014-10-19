@@ -25,7 +25,9 @@ LOCAL_SRC_FILES := soundtouch-jni.cpp soundtouch/source/SoundTouch/AAFilter.cpp 
                 soundtouch/source/SoundTouch/FIRFilter.cpp soundtouch/source/SoundTouch/cpu_detect_x86.cpp \
                 soundtouch/source/SoundTouch/RateTransposer.cpp soundtouch/source/SoundTouch/SoundTouch.cpp \
                 soundtouch/source/SoundTouch/TDStretch.cpp soundtouch/source/SoundTouch/BPMDetect.cpp soundtouch/source/SoundTouch/PeakFinder.cpp \
-				soundtouch/source/SoundTouch/InterpolateLinear.cpp soundtouch/source/SoundTouch/InterpolateCubic.cpp soundtouch/source/SoundTouch/InterpolateShannon.cpp
+				soundtouch/source/SoundTouch/InterpolateLinear.cpp soundtouch/source/SoundTouch/InterpolateCubic.cpp soundtouch/source/SoundTouch/InterpolateShannon.cpp \
+                soundtouch/source/SoundStretch/RunParameters.cpp \
+                soundtouch/source/SoundStretch/WavFile.cpp
 # for native audio
 LOCAL_LDLIBS    += -lgcc 
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/soundtouch/include
@@ -37,5 +39,6 @@ LOCAL_LDLIBS    += -llog
 # don't export all symbols
 # added "-marm" switch to use arm instruction set instead of thumb for improved calculation performance.
 LOCAL_CFLAGS += -Wall -fvisibility=hidden -I soundtouch/source/../include -D ST_NO_EXCEPTION_HANDLING -fdata-sections -ffunction-sections -marm
+LOCAL_CFLAGS += -fexceptions -fpermissive
 
 include $(BUILD_SHARED_LIBRARY)

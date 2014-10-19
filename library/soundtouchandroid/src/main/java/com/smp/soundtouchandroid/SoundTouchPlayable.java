@@ -199,7 +199,9 @@ public class SoundTouchPlayable implements Runnable
 	public SoundTouchPlayable(String fileName, int id, float tempo,
 			float pitchSemi) throws IOException, SoundTouchAndroidException
 	{
-		if (Build.VERSION.SDK_INT >= 16)
+        int version = Build.VERSION.SDK_INT;
+        version = 15;
+		if (version >= 16)
 		{
 			decoder = new MediaCodecAudioDecoder(fileName);
 		} else
@@ -469,8 +471,15 @@ public class SoundTouchPlayable implements Runnable
 		soundTouch = new SoundTouch(id, channels, samplingRate,
 				DEFAULT_BYTES_PER_SAMPLE, tempo, pitchSemi);
 
+
 		track = new AudioTrack(AudioManager.STREAM_MUSIC, samplingRate,
 				channelFormat, AudioFormat.ENCODING_PCM_16BIT,
 				BUFFER_SIZE_TRACK, AudioTrack.MODE_STREAM);
 	}
+
+    public float getBPM(){
+        float bpm = soundTouch.getBPM();
+        return bpm;
+    }
+
 }

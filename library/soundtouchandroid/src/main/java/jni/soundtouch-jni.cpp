@@ -6,19 +6,46 @@
 #include <stdio.h>
 #include <vector>
 
-//#include <stdio.h>
+#include <stdio.h>
 //#include <dlfcn.h>
 
 #include "soundtouch/include/SoundTouch.h"
+#include "soundtouch/include/BPMDetect.h"
+#include "soundtouch/include/STTypes.h"
+#include "soundtouch/source/SoundStretch/RunParameters.h"
+#include "soundtouch/source/SoundStretch/WavFile.h"
 //#include "TimeShiftEffect.h"
 
+
+// Processing chunk size (size chosen to be divisible by 2, 4, 6, 8, 10, 12, 14, 16 channels ...)
+
+#if _WIN32
+    #include <io.h>
+    #include <fcntl.h>
+
+    // Macro for Win32 standard input/output stream support: Sets a file stream into binary mode
+    #define SET_STREAM_TO_BIN_MODE(f) (_setmode(_fileno(f), _O_BINARY))
+#else
+    // Not needed for GNU environment...
+    #define SET_STREAM_TO_BIN_MODE(f) {}
+#endif
+
 #define LOGV(...)   __android_log_print((int)ANDROID_LOG_INFO, "SOUNDTOUCH", __VA_ARGS__)
+#define LOGD(...) __android_log_print(ANDROID_LOG_DEBUG,"SOUNDTOUCH" ,__VA_ARGS__)
+#define LOGI(...) __android_log_print(ANDROID_LOG_INFO,"SOUNDTOUCH" ,__VA_ARGS__)
+#define LOGW(...) __android_log_print(ANDROID_LOG_WARN,"SOUNDTOUCH" ,__VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR,"SOUNDTOUCH" ,__VA_ARGS__)
+#define LOGF(...) __android_log_print(ANDROID_LOG_FATAL,"SOUNDTOUCH" ,__VA_ARGS__)
 //#define //LOGV(...)
 
 #define DLL_PUBLIC __attribute__ ((visibility ("default")))
 
 using namespace soundtouch;
 using namespace std;
+
+static void log(char* message){
+    LOGI("%s", message);
+}
 
 class SoundTouchStream : public SoundTouch
 {
@@ -184,6 +211,219 @@ extern "C" DLL_PUBLIC jint Java_com_smp_soundtouchandroid_SoundTouch_getBytes(
 
 	return bytesWritten;
 }
+
+static void openFiles(WavInFile **inFile, WavOutFile **outFile, const RunParameters *params)
+{
+    log("openFiles");
+    int bits, samplerate, channels;
+
+   LOGI("InFile(%s), OutFile(%s)", params->inFileName, params->outFileName);
+
+    FILE* fptr = fopen(params->inFileName, "rb");
+
+       if (fptr == NULL)
+       {
+           // didn't succeed
+           string msg = "Error : Unable to open file \"";
+//           msg += params->inFileName;
+//           msg += "\" for reading.";
+           LOGI("Error, unable to open file %s", params->inFileName);
+       }else {
+            log("can open the file");
+       }
+
+    if (strcmp(params->inFileName, "stdin") == 0)
+    {
+        // used 'stdin' as input file
+        SET_STREAM_TO_BIN_MODE(stdin);
+        *inFile = new WavInFile(stdin);
+    }
+    else
+    {
+
+    LOGI("new WavInFile(%s)", params->inFileName);
+        // open input file...
+        *inFile = new WavInFile(params->inFileName);
+    }
+
+    // ... open output file with same sound parameters
+    bits = (int)(*inFile)->getNumBits();
+    LOGI("openFiles, bits = %d", bits);
+    samplerate = (int)(*inFile)->getSampleRate();
+    channels = (int)(*inFile)->getNumChannels();
+    LOGI("openFiles, channels = %d", channels);
+
+    if (params->outFileName)
+    {
+        if (strcmp(params->outFileName, "stdout") == 0)
+        {
+            SET_STREAM_TO_BIN_MODE(stdout);
+            *outFile = new WavOutFile(stdout, samplerate, bits, channels);
+        }
+        else
+        {
+          LOGI(" new WavOutFile(%s)", params->outFileName);
+            *outFile = new WavOutFile(params->outFileName, samplerate, bits, channels);
+        }
+    }
+    else
+    {
+        *outFile = NULL;
+    }
+}
+
+
+// Detect BPM rate of inFile and adjust tempo setting accordingly if necessary
+static float detectBPM(WavInFile *inFile, RunParameters *params)
+{
+	log("detectBPM in");
+    float bpmValue;
+    int nChannels;
+    const int BUFF_SIZE = 8192;
+//    BPMDetect bpm(inFile->getNumChannels(), inFile->getSampleRate());
+    BPMDetect bpm(2, 44100);
+    SAMPLETYPE sampleBuffer[BUFF_SIZE];
+
+	log("Detecting BPM rate...");
+    // detect bpm rate
+    fprintf(stderr, "Detecting BPM rate...");
+    fflush(stderr);
+
+    nChannels = (int)inFile->getNumChannels();
+    nChannels = 2;
+
+
+    assert(BUFF_SIZE % nChannels == 0);
+
+	LOGI("Detecting BPM rate...nChannels = %d", nChannels);
+
+    // Process the 'inFile' in small blocks, repeat until whole file has
+    // been processed
+    while (inFile->eof() == 0)
+    {
+        int num, samples;
+
+        // Read sample data from input file
+        num = inFile->read(sampleBuffer, BUFF_SIZE);
+        LOGI("read size %d", num);
+
+        // Enter the new samples to the bpm analyzer class
+        samples = num / nChannels;
+        bpm.inputSamples(sampleBuffer, samples);
+    }
+
+    // Now the whole song data has been analyzed. Read the resulting bpm.
+    bpmValue = bpm.getBpm();
+    log("Detecting BPM rate DONE");
+    fprintf(stderr, "Done!\n");
+
+    // rewind the file after bpm detection
+    inFile->rewind();
+
+	LOGI("detectBPM, bpm=%d", bpmValue);
+    if (bpmValue > 0)
+    {
+        fprintf(stderr, "Detected BPM rate %.1f\n\n", bpmValue);
+    }
+    else
+    {
+        fprintf(stderr, "Couldn't detect BPM rate.\n\n");
+        return bpmValue;
+    }
+
+    if (params->goalBPM > 0)
+    {
+        // adjust tempo to given bpm
+        params->tempoDelta = (params->goalBPM / bpmValue - 1.0f) * 100.0f;
+        fprintf(stderr, "The file will be converted to %.1f BPM\n\n", params->goalBPM);
+    }
+
+    return bpmValue;
+}
+
+static const char _helloText[] =
+    "\n"
+    "   SoundStretch v%s -  Written by Olli Parviainen 2001 - 2014\n"
+    "==================================================================\n"
+    "author e-mail: <oparviai"
+    "@"
+    "iki.fi> - WWW: http://www.surina.net/soundtouch\n"
+    "\n"
+    "This program is subject to (L)GPL license. Run \"soundstretch -license\" for\n"
+    "more information.\n"
+    "\n";
+static float mainEntry()
+{
+    LOGI("mainEntry");
+    WavInFile *inFile;
+    WavOutFile *outFile;
+    RunParameters *params;
+    SoundTouch soundTouch;
+	float bpm = 0;
+
+//    char * paramStr[] = {"4" ,"/storage/emulated/0/androidsoundtouch/aliza.mp3", "/sdcard/androidsoundtouch/aliza.mp3.out", "-b"};
+    char * paramStr[] = {"4" ,"/storage/emulated/0/androidsoundtouch/sample_orig.mp3", "/sdcard/androidsoundtouch/aliza.mp3.out", "-bpm"};
+    int nParams = 4;
+
+    fprintf(stderr, _helloText, SoundTouch::getVersionString());
+    log(SoundTouch::getVersionString());
+
+//    try
+    {
+        // Parse command line parameters
+        params = new RunParameters(nParams, paramStr);
+
+        // Open input & output files
+        log("openFiles");
+        openFiles(&inFile, &outFile, params);
+        log("detectBPM");
+        bpm = detectBPM(inFile, params);
+        if (params->detectBPM == TRUE)
+        {
+            // detect sound BPM (and adjust processing parameters
+            //  accordingly if necessary)
+//            detectBPM(inFile, params);
+        }
+
+        // Setup the 'SoundTouch' object for processing the sound
+//        setup(&soundTouch, inFile, params);
+
+        // clock_t cs = clock();    // for benchmarking processing duration
+        // Process the sound
+//        process(&soundTouch, inFile, outFile);
+        // clock_t ce = clock();    // for benchmarking processing duration
+        // printf("duration: %lf\n", (double)(ce-cs)/CLOCKS_PER_SEC);
+
+        // Close WAV file handles & dispose of the objects
+        delete inFile;
+        delete outFile;
+        delete params;
+
+        fprintf(stderr, "Done!\n");
+
+        return bpm;
+    }
+//    catch (const runtime_error &e)
+//    {
+//        // An exception occurred during processing, display an error message
+//        fprintf(stderr, "%s\n", e.what());
+//        return -1;
+//    }
+
+    return 0;
+}
+
+extern "C" DLL_PUBLIC jfloat Java_com_smp_soundtouchandroid_SoundTouch_getBPM2(
+		JNIEnv *env, jobject thiz, jint track, jint channels)
+{
+//	SoundTouchStream& soundTouch = stStreams.at(track);
+	LOGI("Java_com_smp_soundtouchandroid_SoundTouch_getBPM");
+
+    float bpm = mainEntry();
+
+	return bpm;
+}
+
 
 static int copyBytes(jbyte* arrayOut, queue<jbyte>* byteBufferOut, int toGet)
 {

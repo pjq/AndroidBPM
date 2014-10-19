@@ -91,6 +91,11 @@ public class SoundTouch
 		return getBytes(track, output, output.length);
 	}
 
+    public float getBPM()
+    {
+        return getBPM2(track, channels);
+    }
+
 	//call finish after the last bytes have been written
 	public void finish()
 	{
@@ -123,4 +128,5 @@ public class SoundTouch
 	private static synchronized native final long getOutputBufferSize(int track);
 	private static synchronized native final void setTempo(int track, float tempo);
     private static synchronized native final void setTempoChange(int track, float tempoChange);
+    private static synchronized native final float getBPM2(int track, int channels);
 }

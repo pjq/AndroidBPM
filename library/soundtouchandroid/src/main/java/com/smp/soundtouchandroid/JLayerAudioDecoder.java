@@ -263,13 +263,14 @@ public class JLayerAudioDecoder implements AudioDecoder
 	@Override
 	public void seek(long timeInUs)
 	{
-		throw new UnsupportedOperationException("Seeking is not implemented on API < 16");	
+//		 throw new UnsupportedOperationException("Seeking is not implemented on API < 16");
 	}
 
 	@Override
 	public long getDuration()
 	{
-		throw new UnsupportedOperationException("Seeking is not implemented on API < 16");	
+//		throw new UnsupportedOperationException("Seeking is not implemented on API < 16");
+        return 0;
 	}
 
 	@Override
@@ -281,7 +282,8 @@ public class JLayerAudioDecoder implements AudioDecoder
 	@Override
 	public long getPlayedDuration()
 	{
-		throw new UnsupportedOperationException("Seeking is not implemented on API < 16");	
+//		throw new UnsupportedOperationException("Seeking is not implemented on API < 16");
+        return 0;
 	}
 
 }
