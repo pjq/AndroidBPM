@@ -299,17 +299,33 @@ static float detectBPM(WavInFile *inFile, RunParameters *params)
 
     // Process the 'inFile' in small blocks, repeat until whole file has
     // been processed
-    while (inFile->eof() == 0)
-    {
-        int num, samples;
+    if (false){
 
-        // Read sample data from input file
-        num = inFile->read(sampleBuffer, BUFF_SIZE);
-        LOGI("read size %d", num);
 
-        // Enter the new samples to the bpm analyzer class
-        samples = num / nChannels;
-        bpm.inputSamples(sampleBuffer, samples);
+        while (inFile->eof() == 0)
+        {
+            int num, samples;
+
+            // Read sample data from input file
+            num = inFile->read(sampleBuffer, BUFF_SIZE);
+            LOGI("read size %d", num);
+
+            // Enter the new samples to the bpm analyzer class
+            samples = num / nChannels;
+            bpm.inputSamples(sampleBuffer, samples);
+        }
+    } else {
+
+
+        SAMPLETYPE buffer[BUFF_SIZE];
+        FILE *file = fopen(params->inFileName, "r+");
+        while (!feof(file)) {
+            int num, samples;
+            num = fread(buffer, sizeof(SAMPLETYPE), BUFF_SIZE, file);
+            samples = num / nChannels;
+
+            bpm.inputSamples(buffer, samples);
+        }
     }
 
     // Now the whole song data has been analyzed. Read the resulting bpm.
