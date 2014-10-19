@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid.fragment;
+package me.pjq.soundtouch.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import me.pjq.jacocoandroid.R;
-import me.pjq.jacocoandroid.dummy.DummyContent;
+import me.pjq.soundtouch.R;
+import me.pjq.soundtouch.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -22,7 +22,7 @@ import me.pjq.jacocoandroid.dummy.DummyContent;
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
  * <p />
- * Activities containing this fragment MUST implement the {@link me.pjq.jacocoandroid.fragment.OnFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link me.pjq.soundtouch.fragment.OnFragmentInteractionListener}
  * interface.
  */
 public class ItemFragment extends Fragment implements AbsListView.OnItemClickListener {

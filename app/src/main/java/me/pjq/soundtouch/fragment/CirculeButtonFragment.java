@@ -1,18 +1,16 @@
-package me.pjq.jacocoandroid.fragment;
+package me.pjq.soundtouch.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import at.markushi.ui.CircleButton;
-import me.pjq.jacocoandroid.PicassoActivity_;
-import me.pjq.jacocoandroid.R;
+import me.pjq.soundtouch.PicassoActivity_;
+import me.pjq.soundtouch.R;
 
 /**
  * A simple {@link Fragment} subclass.

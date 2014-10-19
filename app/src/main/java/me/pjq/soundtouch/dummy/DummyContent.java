@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid.dummy;
+package me.pjq.soundtouch.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

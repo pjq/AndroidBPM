@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid.fragment;
+package me.pjq.soundtouch.fragment;
 
 /**
  * Created by pjq on 7/21/14.

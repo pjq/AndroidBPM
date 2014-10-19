@@ -1,8 +1,7 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 
 import android.app.ActionBar;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,13 +11,12 @@ import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
 
-import java.net.URI;
-
-import me.pjq.jacocoandroid.fragment.CirculeButtonFragment;
-import me.pjq.jacocoandroid.fragment.ItemFragment;
-import me.pjq.jacocoandroid.fragment.NavigationDrawerFragment;
-import me.pjq.jacocoandroid.fragment.OnFragmentInteractionListener;
-import me.pjq.jacocoandroid.fragment.PlusOneFragment;
+import me.pjq.soundtouch.fragment.CirculeButtonFragment;
+import me.pjq.soundtouch.fragment.ItemFragment;
+import me.pjq.soundtouch.fragment.NavigationDrawerFragment;
+import me.pjq.soundtouch.fragment.OnFragmentInteractionListener;
+import me.pjq.soundtouch.fragment.PlusOneFragment;
+import me.pjq.soundtouch.library.SoundTouchUtils;
 
 
 public class MainActivity extends FragmentActivity
@@ -70,6 +68,8 @@ public class MainActivity extends FragmentActivity
 
             }
         });
+
+        SoundTouchUtils.play();
     }
 
     @Override

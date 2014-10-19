@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import android.test.ActivityInstrumentationTestCase2;
 import com.robotium.solo.Solo;

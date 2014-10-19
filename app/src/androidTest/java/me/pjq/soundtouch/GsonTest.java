@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">JacocoAndroid</string>
+    <string name="app_name">AndroidSoundTouch</string>
     <string name="title_section1">Show circle button</string>
     <string name="title_section2">Show List</string>
     <string name="title_section3">Show 1+</string>

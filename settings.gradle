@@ -1,1 +1,1 @@
-include ':app', ':library:circlebutton'
+include ':app', ':library:circlebutton', ':library:soundtouchandroid'

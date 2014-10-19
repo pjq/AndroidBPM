@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import android.app.Activity;
 import android.os.Bundle;

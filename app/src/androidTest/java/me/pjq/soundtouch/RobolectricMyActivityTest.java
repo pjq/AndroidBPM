@@ -1,6 +1,5 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
-import android.widget.TextView;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;

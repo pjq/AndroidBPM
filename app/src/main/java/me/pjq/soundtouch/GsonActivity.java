@@ -1,8 +1,7 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import android.support.v4.app.FragmentActivity;
 
-import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;

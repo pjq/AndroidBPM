@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import org.junit.runners.model.InitializationError;
 import org.robolectric.AndroidManifest;

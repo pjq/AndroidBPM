@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid.fragment;
+package me.pjq.soundtouch.fragment;
 
 
 import android.app.Activity;
@@ -22,7 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import me.pjq.jacocoandroid.R;
+import me.pjq.soundtouch.R;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.

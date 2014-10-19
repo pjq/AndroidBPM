@@ -1,4 +1,4 @@
-package me.pjq.jacocoandroid;
+package me.pjq.soundtouch;
 
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
