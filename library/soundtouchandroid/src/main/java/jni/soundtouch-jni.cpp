@@ -12,8 +12,9 @@
 #include "soundtouch/include/SoundTouch.h"
 #include "soundtouch/include/BPMDetect.h"
 #include "soundtouch/include/STTypes.h"
-#include "soundtouch/source/SoundStretch/RunParameters.h"
-#include "soundtouch/source/SoundStretch/WavFile.h"
+#include "SoundStretch/RunParameters.h"
+#include "SoundStretch/WavFile.h"
+#include "SoundStretch/SoundStretch.h"
 //#include "TimeShiftEffect.h"
 
 
@@ -435,7 +436,20 @@ extern "C" DLL_PUBLIC jfloat Java_com_smp_soundtouchandroid_SoundTouch_getBPM2(
 //	SoundTouchStream& soundTouch = stStreams.at(track);
 	LOGI("Java_com_smp_soundtouchandroid_SoundTouch_getBPM");
 
-    float bpm = mainEntry();
+    float bpm = 0;// (float)main.mainEntry();
+
+	return bpm;
+}
+
+
+extern "C" DLL_PUBLIC jfloat Java_com_smp_soundtouchandroid_SoundTouch_soundstretch(
+		JNIEnv *env, jobject thiz)
+{
+	LOGI("Java_com_smp_soundtouchandroid_SoundTouch_soundstretch");
+    char * paramStr[] = {"4" ,"/storage/emulated/0/androidsoundtouch/sample_orig.mp3", "/sdcard/androidsoundtouch/aliza.mp3.out", "-bpm"};
+    int nParams = 4;
+    SoundStretch *main = new SoundStretch();
+    float bpm = main->mainCall(nParams, paramStr);
 
 	return bpm;
 }

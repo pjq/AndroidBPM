@@ -13,8 +13,6 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-package net.surina.soundtouch;
-
 public final class SoundTouch
 {
     // Native interface function that returns SoundTouch version string.

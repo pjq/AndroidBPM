@@ -1,0 +1,232 @@
+I/Adreno-EGL(26773): <qeglDrvAPI_eglInitialize:320>: EGL 1.4 QUALCOMM Build: I0404c4692afb8623f95c43aeb6d5e13ed4b30ddbDate: 11/06/13
+D/OpenGLRenderer(26773): Enabling debug mode 0
+I/DEBUG   (  178): *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+I/DEBUG   (  178): Build fingerprint: 'google/hammerhead/hammerhead:4.4.4/KTU84P/1227136:user/release-keys'
+I/DEBUG   (  178): Revision: '11'
+I/DEBUG   (  178): pid: 26773, tid: 26808, name: Thread-97421  >>> me.pjq.soundtouch <<<
+I/DEBUG   (  178): signal 8 (SIGFPE), code -6 (SI_TKILL), fault addr 00006895
+I/DEBUG   (  178):     r0 00000000  r1 000068b8  r2 00000008  r3 00000000
+I/DEBUG   (  178):     r4 00000008  r5 00000000  r6 000068b8  r7 0000010c
+I/DEBUG   (  178):     r8 4911dab8  r9 48c0f290  sl 600bd8f0  fp 656f2558
+I/DEBUG   (  178):     ip 00000000  sp 491170b8  lr 400dffe5  pc 400eef90  cpsr 000f0010
+I/DEBUG   (  178):     d0  20746d6645564100  d1  0000000100000000
+I/DEBUG   (  178):     d2  0000000000000000  d3  6174616400000000
+I/DEBUG   (  178):     d4  69737365636f7270  d5  616665642820676e
+I/DEBUG   (  178):     d6  0000000020746c75  d7  459c400000000000
+I/DEBUG   (  178):     d8  3f8ccccd00000000  d9  0000000000000000
+I/DEBUG   (  178):     d10 0000000000000000  d11 0000000000000000
+I/DEBUG   (  178):     d12 0000000000000000  d13 0000000000000000
+I/DEBUG   (  178):     d14 0000000000000000  d15 0000000000000000
+I/DEBUG   (  178):     d16 40d0000000000000  d17 c000000000000000
+I/DEBUG   (  178):     d18 0000000000000000  d19 3fe62e4300000000
+I/DEBUG   (  178):     d20 3fe62e42fefa39ef  d21 be205c610ca86c39
+I/DEBUG   (  178):     d22 bf66c16c16bebd93  d23 40d0000000000000
+I/DEBUG   (  178):     d24 8000000000000000  d25 3ff0000000000000
+I/DEBUG   (  178):     d26 0000000000000000  d27 8000000000000000
+I/DEBUG   (  178):     d28 8000000000000000  d29 0000000000000000
+I/DEBUG   (  178):     d30 0000000000000000  d31 3f11566aaf25de2c
+I/DEBUG   (  178):     scr 80000010
+I/DEBUG   (  178):
+I/DEBUG   (  178): backtrace:
+I/DEBUG   (  178):     #00  pc 00021f90  /system/lib/libc.so (tgkill+12)
+I/DEBUG   (  178):     #01  pc 00012fe1  /system/lib/libc.so (pthread_kill+48)
+I/DEBUG   (  178):     #02  pc 000131f5  /system/lib/libc.so (raise+10)
+I/DEBUG   (  178):     #03  pc 0005894c  /data/app-lib/me.pjq.soundtouch-1/libsoundtouch.so (__aeabi_ldiv0+8)
+I/DEBUG   (  178):
+I/DEBUG   (  178): stack:
+I/DEBUG   (  178):          49117078  00000000
+I/DEBUG   (  178):          4911707c  00000000
+I/DEBUG   (  178):          49117080  00000000
+I/DEBUG   (  178):          49117084  00000000
+I/DEBUG   (  178):          49117088  00000000
+I/DEBUG   (  178):          4911708c  00000000
+I/DEBUG   (  178):          49117090  00000000
+I/DEBUG   (  178):          49117094  00000000
+I/DEBUG   (  178):          49117098  00000000
+I/DEBUG   (  178):          4911709c  00000000
+I/DEBUG   (  178):          491170a0  00000000
+I/DEBUG   (  178):          491170a4  00000000
+I/DEBUG   (  178):          491170a8  00000000
+I/DEBUG   (  178):          491170ac  00000000
+I/DEBUG   (  178):          491170b0  00000000
+I/DEBUG   (  178):          491170b4  00000000
+I/DEBUG   (  178):     #00  491170b8  00000008
+I/DEBUG   (  178):          491170bc  00000000
+I/DEBUG   (  178):          491170c0  000068b8
+I/DEBUG   (  178):          491170c4  00000000
+I/DEBUG   (  178):          491170c8  00000000
+I/DEBUG   (  178):          491170cc  400dffe5  /system/lib/libc.so (pthread_kill+52)
+I/DEBUG   (  178):     #01  491170d0  00000008
+I/DEBUG   (  178):          491170d4  00000000
+I/DEBUG   (  178):          491170d8  00000000
+I/DEBUG   (  178):          491170dc  400e01f9  /system/lib/libc.so (raise+14)
+I/DEBUG   (  178):     #02  491170e0  49117108  [stack:26808]
+I/DEBUG   (  178):          491170e4  48cac950  /data/app-lib/me.pjq.soundtouch-1/libsoundtouch.so (__aeabi_ldiv0+12)
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near r1:
+I/DEBUG   (  178):     00006898 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068a8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068b8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068c8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068d8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068e8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068f8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006908 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006918 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006928 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006938 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006948 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006958 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006968 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006978 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006988 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near r6:
+I/DEBUG   (  178):     00006898 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068a8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068b8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068c8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068d8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068e8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     000068f8 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006908 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006918 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006928 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006938 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006948 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006958 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006968 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006978 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):     00006988 ffffffff ffffffff ffffffff ffffffff
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near r8:
+I/DEBUG   (  178):     4911da98 3f800000 3f800000 4911dab8 656f1608
+I/DEBUG   (  178):     4911daa8 6563cb90 6563cb90 656f2628 48c5d468
+I/DEBUG   (  178):     4911dab8 48cb6902 48cb6904 48cb693a 48cb6962
+I/DEBUG   (  178):     4911dac8 000003e7 488ebfc8 656f0fd8 00000001
+I/DEBUG   (  178):     4911dad8 00000000 656f09c0 00000000 0000004c
+I/DEBUG   (  178):     4911dae8 656f1ba0 656f22d0 4011b384 656f1608
+I/DEBUG   (  178):     4911daf8 6563cb90 6563cb90 656f2628 600bd8f0
+I/DEBUG   (  178):     4911db08 656f2558 488ec621 656f1608 00000000
+I/DEBUG   (  178):     4911db18 00000000 4011b384 00000000 3f8ccccd
+I/DEBUG   (  178):     4911db28 656f1ba0 488edc19 6563ba48 656f1ba0
+I/DEBUG   (  178):     4911db38 00000000 00000000 42424242 c64bcbef
+I/DEBUG   (  178):     4911db48 42424242 00000000 3f8ccccd 656f2558
+I/DEBUG   (  178):     4911db58 656f2490 48935d2d 656f2490 600bd8f0
+I/DEBUG   (  178):     4911db68 4911dbe0 41558d65 4911db80 41566347
+I/DEBUG   (  178):     4911db78 418a2078 00000044 00000047 00000001
+I/DEBUG   (  178):     4911db88 656f2558 00000000 3f8ccccd 656f2558
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near r9:
+I/DEBUG   (  178):     48c0f270 00000000 00000000 656f22d0 00000000
+I/DEBUG   (  178):     48c0f280 00000000 00000000 119f45a7 00000283
+I/DEBUG   (  178):     48c0f290 00110000 00000000 412bb070 00000000
+I/DEBUG   (  178):     48c0f2a0 4901e000 4911dc10 00000000 4911dad0
+I/DEBUG   (  178):     48c0f2b0 00000000 48c0f810 00000000 656f1f50
+I/DEBUG   (  178):     48c0f2c0 00000000 4901a000 00104000 00000000
+I/DEBUG   (  178):     48c0f2d0 00000000 00000000 00000010 000068b8
+I/DEBUG   (  178):     48c0f2e0 00000000 00000000 ffffffff 48bdc3e0
+I/DEBUG   (  178):     48c0f2f0 48c0f510 00000000 00000000 00000000
+I/DEBUG   (  178):     48c0f300 00000000 4911dad4 00000000 00000000
+I/DEBUG   (  178):     48c0f310 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     48c0f320 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     48c0f330 00000000 00000000 00000000 48c0f528
+I/DEBUG   (  178):     48c0f340 00000000 00000000 00000000 48c0f210
+I/DEBUG   (  178):     48c0f350 48c0f5a8 00000000 48c0f5c8 00000000
+I/DEBUG   (  178):     48c0f360 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near sl:
+I/DEBUG   (  178):     600bd8d0 00000002 600a7c98 600bd8e0 00000000
+I/DEBUG   (  178):     600bd8e0 60000148 00000000 00000001 600bd8f0
+I/DEBUG   (  178):     600bd8f0 600001b0 00000000 600bcc28 60000290
+I/DEBUG   (  178):     600bd900 60002768 600177c0 60019de0 00080001
+I/DEBUG   (  178):     600bd910 000a2df8 00008060 6242e3ad 62391008
+I/DEBUG   (  178):     600bd920 00000000 00000020 6242e412 6242e404
+I/DEBUG   (  178):     600bd930 00000d0c 00000022 00000000 6242e40c
+I/DEBUG   (  178):     600bd940 60019c68 00000000 600bd958 00000010
+I/DEBUG   (  178):     600bd950 4849e45e 00000000 600308c0 00000000
+I/DEBUG   (  178):     600bd960 00000010 0061006a 00610076 006c002e
+I/DEBUG   (  178):     600bd970 006e0061 002e0067 00680054 00650072
+I/DEBUG   (  178):     600bd980 00640061 00000000 60017690 00000000
+I/DEBUG   (  178):     600bd990 00000006 600bd9b0 600bd9c8 600bd9e0
+I/DEBUG   (  178):     600bd9a0 600bd9f8 600bda10 600bda28 00000000
+I/DEBUG   (  178):     600bd9b0 600176f8 00000000 600bcc28 0000000a
+I/DEBUG   (  178):     600bd9c0 00000675 00000068 600176f8 00000000
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near fp:
+I/DEBUG   (  178):     656f2538 656f2540 0000001b 60000148 00000000
+I/DEBUG   (  178):     656f2548 00000001 656f2490 00000000 00000013
+I/DEBUG   (  178):     656f2558 656f22d0 00000000 6563cb90 0000006b
+I/DEBUG   (  178):     656f2568 600308c0 00000000 0000002b 0065006d
+I/DEBUG   (  178):     656f2578 0070002f 0071006a 0073002f 0075006f
+I/DEBUG   (  178):     656f2588 0064006e 006f0074 00630075 002f0068
+I/DEBUG   (  178):     656f2598 0069006c 00720062 00720061 002f0079
+I/DEBUG   (  178):     656f25a8 006f0053 006e0075 00540064 0075006f
+I/DEBUG   (  178):     656f25b8 00680063 00740055 006c0069 00240073
+I/DEBUG   (  178):     656f25c8 00000032 00000023 60019c68 00000000
+I/DEBUG   (  178):     656f25d8 656f2568 0000002b 363ff12b 00000000
+I/DEBUG   (  178):     656f25e8 00000000 0000001b 600af190 00000000
+I/DEBUG   (  178):     656f25f8 3d4d09b8 821f5dd1 00000000 00000023
+I/DEBUG   (  178):     656f2608 655e1bf0 00000000 656f25d0 656f2628
+I/DEBUG   (  178):     656f2618 3d4d09b8 821f5dd1 00000000 0000001b
+I/DEBUG   (  178):     656f2628 601c21c0 00000000 00000002 00000001
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory near sp:
+I/DEBUG   (  178):     49117098 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     491170a8 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     491170b8 00000008 00000000 000068b8 00000000
+I/DEBUG   (  178):     491170c8 00000000 400dffe5 00000008 00000000
+I/DEBUG   (  178):     491170d8 00000000 400e01f9 49117108 48cac950
+I/DEBUG   (  178):     491170e8 00000000 48c60c68 0005b00c 48d13620
+I/DEBUG   (  178):     491170f8 48d135f0 00000004 4911dab8 48c62c74
+I/DEBUG   (  178):     49117108 48cbbbd0 00000000 00000000 00000000
+I/DEBUG   (  178):     49117118 c0000000 402ced1d 00000000 00000000
+I/DEBUG   (  178):     49117128 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117138 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117148 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117158 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117168 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117178 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):     49117188 00000000 00000000 00000000 00000000
+I/DEBUG   (  178):
+I/DEBUG   (  178): code around pc:
+I/DEBUG   (  178):     400eef70 e8bd00f0 e3700a01 912fff1e e2600000
+I/DEBUG   (  178):     400eef80 ea006d81 e92d50f0 e3a07f43 ef000000
+I/DEBUG   (  178):     400eef90 e8bd50f0 e3700a01 912fff1e e2600000
+I/DEBUG   (  178):     400eefa0 ea006d79 e92d50f0 e3a070ee ef000000
+I/DEBUG   (  178):     400eefb0 e8bd50f0 e3700a01 912fff1e e2600000
+I/DEBUG   (  178):     400eefc0 ea006d71 f200429a bf008069 f040f891
+I/DEBUG   (  178):     400eefd0 4001e92d d3412a10 0300f1c0 030ff013
+I/DEBUG   (  178):     400eefe0 eba2d01d ea5f0203 bf447cc3 eb01f811
+I/DEBUG   (  178):     400eeff0 eb01f800 f811bf21 f811cb01 f800eb01
+I/DEBUG   (  178):     400ef000 f800cb01 ea5feb01 da037c43 030df9a1
+I/DEBUG   (  178):     400ef010 031df980 f921d303 f900070d 3a40071d
+I/DEBUG   (  178):     400ef020 f921d30b f921020d f891420d 3a40f100
+I/DEBUG   (  178):     400ef030 022df900 422df900 3220d2f3 f921d305
+I/DEBUG   (  178):     400ef040 f1a2020d f9000220 f102022d f0120220
+I/DEBUG   (  178):     400ef050 d0030f10 0a0df921 0a2df900 7c42ea5f
+I/DEBUG   (  178):     400ef060 f921d303 f900070d da03070d 030df9a1
+I/DEBUG   (  178):
+I/DEBUG   (  178): code around lr:
+I/DEBUG   (  178):     400dffc4 447b4b13 42b3e010 6a1ed10e 44784811
+I/DEBUG   (  178):     400dffd4 ec84f7fb ea0ef00d 46224631 efd0f00e
+I/DEBUG   (  178):     400dffe4 d00a3001 e00b2400 2b00681b 480ad1eb
+I/DEBUG   (  178):     400dfff4 44782403 ec72f7fb f001e002 6804fa23
+I/DEBUG   (  178):     400e0004 fa20f001 46206005 bf00bd70 0003b3de
+I/DEBUG   (  178):     400e0014 0003b3d2 0003b3ca 0003b3a6 bf7ef7ff
+I/DEBUG   (  178):     400e0024 4a3e4b3d e92d447b b08b43f0 4606589c
+I/DEBUG   (  178):     400e0034 6823460d 930946a1 fa04f001 8000f8d0
+I/DEBUG   (  178):     400e0044 d0482d00 f00f4628 280fff9b d8444604
+I/DEBUG   (  178):     400e0054 ffe4f7ff d1064286 4629200f e8d8f00d
+I/DEBUG   (  178):     400e0064 d03c2800 482ee02e f7fb4478 482debb6
+I/DEBUG   (  178):     400e0074 e0154478 d11342b0 482b6a06 f7fb4478
+I/DEBUG   (  178):     400e0084 4a2aec2e 46332120 a801447a f83af013
+I/DEBUG   (  178):     400e0094 a8012101 fb54f01a 46061c42 e011d104
+I/DEBUG   (  178):     400e00a4 28006800 e02cd1e6 46294630 f00d4622
+I/DEBUG   (  178):     400e00b4 1c43e914 d11e4607 f9c4f001 29046801
+I/DEBUG   (  178):
+I/DEBUG   (  178): memory map around fault addr 00006895:
+I/DEBUG   (  178):     (no map below)
+I/DEBUG   (  178):     (no map for address)
+I/DEBUG   (  178):     400a3000-400a5000 r-x /system/bin/app_process
+E/JavaBinder(  749): !!! FAILED BINDER TRANSACTION !!!

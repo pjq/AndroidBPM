@@ -478,7 +478,8 @@ public class SoundTouchPlayable implements Runnable
 	}
 
     public float getBPM(){
-        float bpm = soundTouch.getBPM();
+//        float bpm = soundTouch.getBPM();
+        float bpm = soundTouch.soundStretch();
         return bpm;
     }
 

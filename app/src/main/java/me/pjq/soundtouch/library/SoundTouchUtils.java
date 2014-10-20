@@ -50,7 +50,7 @@ public class SoundTouchUtils {
     }
 
     public static void play() {
-        String path = LocalPathResolver.getBaseDir() + "/aliza.mp3";
+        String path = LocalPathResolver.getBaseDir() + "/sample_orig.mp3";
         play(path);
     }
 

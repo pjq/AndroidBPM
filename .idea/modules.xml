@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/AndroidBPM.iml" filepath="$PROJECT_DIR$/AndroidBPM.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidSoundTouch.iml" filepath="$PROJECT_DIR$/AndroidSoundTouch.iml" />
       <module fileurl="file://$PROJECT_DIR$/JacocoAndroid.iml" filepath="$PROJECT_DIR$/JacocoAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidjacoco.iml" filepath="$PROJECT_DIR$/androidjacoco.iml" />

@@ -15,6 +15,29 @@ repositories {
 android {
     compileSdkVersion 19
     buildToolsVersion "19.1.0"
+
+    sourceSets.main {
+        jni.srcDirs 'src/main/jni2asdf'
+    }
+
+    productFlavors {
+//        arm {
+//            ndk {
+//                abiFilters "armeabi"
+//            }
+//        }
+//        armv7a {
+//            ndk {
+//                //abiFilters "armeabi", "armeabi-v7a"
+//                abiFilters  "armeabi-v7a"
+//            }
+//        }
+//        x86 {
+//            ndk {
+//                abiFilter "x86"
+//            }
+//        }
+    }
 }
 
 dependencies {
